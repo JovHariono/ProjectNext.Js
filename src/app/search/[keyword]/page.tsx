@@ -1,19 +1,18 @@
-"use client"
+"use client";
 
-import { useSearchParams } from 'next/navigation';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Data } from '../types';
-import axios from 'axios';
-import Header from '@/components/AnimeList/Header';
-import AnimeList from '@/components/AnimeList';
+import { Data } from "@/app/types";
+import AnimeList from "@/components/AnimeList";
+import Header from "@/components/AnimeList/Header";
+import axios from "axios";
+import * as React from "react";
+import { useEffect, useState } from "react";
 
 interface ISearchResultProps {
+  params: { keyword: string };
 }
 
-const SearchResult: React.FunctionComponent<ISearchResultProps> = (props) => {
-  const searchParams = useSearchParams();
-  const result = searchParams.get("result")
+const SearchResult: React.FunctionComponent<ISearchResultProps> = ({ params }) => {
+  const result = params.keyword
 
   const [datasSearchAnime, setSearchAnime] = useState<Data[]>([]);
   const [pending, setIsPending] = useState(true);
@@ -31,11 +30,13 @@ const SearchResult: React.FunctionComponent<ISearchResultProps> = (props) => {
   }, []);
 
   return (
-    <section>
+    <>
+      <section>
       { pending && <div className="custom-loader"></div> }
       { !pending && <Header title={`Pencarian untuk ${result}`} linkHref="/populer" linkTitle="" />}
       { datasSearchAnime && <AnimeList api={datasSearchAnime}  />}
       </section>
+    </>
   );
 };
 
