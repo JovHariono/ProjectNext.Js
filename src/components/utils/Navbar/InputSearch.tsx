@@ -10,6 +10,10 @@ interface IInputSearchProps {}
 const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
   const [search, setSearch] = useState("");
 
+  const handleClick = () => {
+    setSearch("");
+  };
+
   return (
     <div className="relative">
       <input
@@ -19,12 +23,20 @@ const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
         type="text"
         placeholder="Cari anime..."
         className="p-2 rounded w-full"
+        value={search}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            window.location.href = `/search?result=${search}`;
+            handleClick();
+          }
+        }}
       />
-      <button className="absolute top-2 end-2">
+      <button className="absolute top-2 end-2" onClick={handleClick}>
         <Link
           href={{
             pathname: "/search",
-            query: { search: search },
+            query: { result: search },
           }}
         >
           <MagnifyingGlass size={24} />
