@@ -1,12 +1,21 @@
+"use client"
+
+import { useSearchParams } from 'next/navigation';
 import * as React from 'react';
 
-interface ISearchPageProps {
+interface ISearchResultProps {
 }
 
-const SearchPage: React.FunctionComponent<ISearchPageProps> = (props) => {
+const SearchResult: React.FunctionComponent<ISearchResultProps> = (props) => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search")
+  console.log(search)
+
   return (
-    <div>SearchPage</div>
+    <div>
+      
+    </div>
   );
 };
 
-export default SearchPage;
+export default SearchResult;
