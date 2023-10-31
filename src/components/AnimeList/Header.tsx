@@ -7,15 +7,13 @@ interface IHeaderProps {
   linkTitle: string;
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = (
-  props
-) => {
+const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   return (
     <div className="p-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold">{props.title}</h1>
+      <h1 className="text-2xl font-bold text-color-primary transition-all">{props.title}</h1>
       <Link
         href={props.linkHref}
-        className="md:text-xl text-md underline hover:text-indigo-500 transition-all"
+        className="md:text-xl text-md underline text-color-primary hover:text-color-accent transition-all"
       >
         {props.linkTitle}
       </Link>

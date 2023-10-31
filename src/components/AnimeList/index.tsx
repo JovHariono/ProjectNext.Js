@@ -21,7 +21,11 @@ const AnimeList: React.FunctionComponent<IAnimeListProps> = (props) => {
     <div className="grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 px-4 pb-4">
       {props.api.map((data) => {
         return (
-          <Link className="cursor-pointer shadow-md" href={`/${data.mal_id}`} key={data.mal_id}>
+          <Link
+            className="cursor-pointer shadow-xl text-color-primary hover:text-color-accent transition-all rounded border-color-accent"
+            href={`/${data.mal_id}`}
+            key={data.mal_id}
+          >
             <Image
               src={data.images.webp.image_url}
               alt="..."

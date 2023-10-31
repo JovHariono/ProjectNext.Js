@@ -1,27 +1,32 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Navbar from '@/components/utils/Navbar'
+import type { Metadata } from "next";
+import { Gabarito } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/utils/Navbar";
 
-const inter = Inter({ subsets: ['latin'] })
+const gabarito = Gabarito({
+  subsets: ["latin"],
+});
 
 //SEO
 export const metadata: Metadata = {
-  title: 'CuyAnimeList',
-  description: 'Website anime indonesia',
-}
+  title: "CuyAnimeList",
+  description: "Website anime indonesia",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">      
-      <body className={inter.className} suppressHydrationWarning={true}>
+    <html lang="en">
+      <body
+        className={`${gabarito.className} bg-color-dark`}
+        suppressHydrationWarning={true}
+      >
         <Navbar />
         {children}
-        </body>
+      </body>
     </html>
-  )
+  );
 }

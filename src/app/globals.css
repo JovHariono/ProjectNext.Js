@@ -23,7 +23,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  color: black;
+  color: #eeeeee;
   box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
     calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
     calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,

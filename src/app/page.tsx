@@ -34,11 +34,11 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
       </section>
 
       {/* Anime terbaru */}
-      <section>
+      {/* <section>
       { pending && <div className="custom-loader"></div> }
       { !pending && <Header title="Anime Terbaru" linkHref="/new" linkTitle="Ikuti Sekarang" />}
       { datasTopAnime && <AnimeList api={datasTopAnime}  />}
-      </section>
+      </section> */}
     </>
   );
 };
