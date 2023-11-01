@@ -1,19 +1,10 @@
 import * as React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-
-interface IAnime {
-  mal_id: string;
-  images: {
-    webp: {
-      image_url: string;
-    };
-  };
-  title: string;
-}
+import { Data } from "@/app/types";
 
 interface IAnimeListProps {
-  api: IAnime[];
+  api: Data[];
 }
 
 const AnimeList: React.FunctionComponent<IAnimeListProps> = (props) => {

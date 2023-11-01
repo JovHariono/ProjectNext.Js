@@ -4,12 +4,11 @@ import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Data } from "./types";
 
 interface IHomeProps {}
 
 const Home: React.FunctionComponent<IHomeProps> = (props) => {
-  const [datasTopAnime, setDatasTopAnime] = useState<Data[]>([]);
+  const [datasTopAnime, setDatasTopAnime] = useState([]);
   const [pending, setIsPending] = useState(true);
 
   useEffect(() => {
@@ -32,13 +31,6 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
       { !pending && <Header title="Paling Populer" linkHref="/populer" linkTitle="Lihat Semua" />}
       { datasTopAnime && <AnimeList api={datasTopAnime}  />}
       </section>
-
-      {/* Anime terbaru */}
-      {/* <section>
-      { pending && <div className="custom-loader"></div> }
-      { !pending && <Header title="Anime Terbaru" linkHref="/new" linkTitle="Ikuti Sekarang" />}
-      { datasTopAnime && <AnimeList api={datasTopAnime}  />}
-      </section> */}
     </>
   );
 };
