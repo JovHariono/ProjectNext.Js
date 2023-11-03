@@ -30,21 +30,21 @@ const Pagination: React.FunctionComponent<IPaginationProps> = (props) => {
 
   return (
     <div className="flex justify-center items-center py-4 px-2 gap-4 text-color-primary text-2xl">
-      <button
+      { props.page <= 1 ? null : <button
         className="transition-all hover:text-color-accent underline"
         onClick={handlePrevClick}
       >
         Prev
-      </button>
+      </button>}
       <p>
         {props.page} of {props.lastpage}
       </p>
-      <button
+      { props.page >= props.lastpage ? null : <button
         className="transition-all hover:text-color-accent underline"
         onClick={handleNextClick}
       >
         Next
-      </button>
+      </button>}
     </div>
   );
 };

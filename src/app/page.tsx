@@ -4,6 +4,7 @@ import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ApiLibs from "./libs/api-libs";
 
 interface IHomeProps {}
 
@@ -22,6 +23,8 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
         console.log(err);
       });
   }, []);
+
+  <ApiLibs resource={"top/anime"} query={"limit=8"} setIsPending={setIsPending} setDatasTopAnime={setDatasTopAnime} datasTopAnime={datasTopAnime} pending={pending} />
 
   return (
     <>
