@@ -1,6 +1,5 @@
 import axios from 'axios';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface IApiLibsProps {
     resource: string;
@@ -11,23 +10,21 @@ interface IApiLibsProps {
     setIsPending: (pending: boolean) => void
 }
 
-const ApiLibs: React.FunctionComponent<IApiLibsProps> = (props) => {
-
+const useApiData = (props: IApiLibsProps) => {
     useEffect(() => {
+        props.setIsPending(true);
+
         axios
           .get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${props.resource}?${props.query}`)
           .then((res) => {
             props.setDatasTopAnime(res.data.data);
-            props.setIsPending(false)
-            console.log(props.pending)
+            props.setIsPending(false);
           })
           .catch((err) => {
             console.log(err);
+            props.setIsPending(false);
           });
-      }, []);
-  return (
-    <div></div>
-  );
+    }, [props.resource, props.query, props.setDatasTopAnime, props.setIsPending]);
 };
 
-export default ApiLibs;
+export default useApiData;

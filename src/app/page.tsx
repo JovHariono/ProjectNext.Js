@@ -4,7 +4,7 @@ import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ApiLibs from "./libs/api-libs";
+import useApiData from "./libs/api-libs";
 
 interface IHomeProps {}
 
@@ -12,19 +12,14 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
   const [datasTopAnime, setDatasTopAnime] = useState([]);
   const [pending, setIsPending] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`)
-      .then((res) => {
-        setDatasTopAnime(res.data.data);
-        setIsPending(false)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  <ApiLibs resource={"top/anime"} query={"limit=8"} setIsPending={setIsPending} setDatasTopAnime={setDatasTopAnime} datasTopAnime={datasTopAnime} pending={pending} />
+  useApiData({
+    resource: "top/anime",
+    query: "limit=8",
+    setDatasTopAnime,
+    setIsPending,
+    pending,
+    datasTopAnime,
+  });
 
   return (
     <>
