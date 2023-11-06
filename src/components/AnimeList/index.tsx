@@ -14,7 +14,7 @@ const AnimeList: React.FunctionComponent<IAnimeListProps> = (props) => {
         return (
           <Link
             className="cursor-pointer shadow-xl text-color-primary hover:text-color-accent transition-all rounded border-color-accent"
-            href={`/${data.mal_id}`}
+            href={`/anime/${data.mal_id}`}
             key={data.mal_id}
           >
             <Image

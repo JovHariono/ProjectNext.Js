@@ -9,16 +9,20 @@ import useApiData from "./libs/api-libs";
 interface IHomeProps {}
 
 const Home: React.FunctionComponent<IHomeProps> = (props) => {
-  const [datasTopAnime, setDatasTopAnime] = useState([]);
+  const [datasAnime, setDatasAnime] = useState([]);
   const [pending, setIsPending] = useState(true);
 
   useApiData({
     resource: "top/anime",
     query: "limit=8",
-    setDatasTopAnime,
+    setDatasAnime,
     setIsPending,
     pending,
-    datasTopAnime,
+    datasAnime,
+    page: 0,
+    lastpage: 0,
+    setPage: () => "",
+    setLastPage: () => "",
   });
 
   return (
@@ -27,7 +31,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
       <section>
       { pending && <div className="custom-loader"></div> }
       { !pending && <Header title="Paling Populer" linkHref="/populer" linkTitle="Lihat Semua" />}
-      { datasTopAnime && <AnimeList api={datasTopAnime}  />}
+      { datasAnime && <AnimeList api={datasAnime}  />}
       </section>
     </>
   );
