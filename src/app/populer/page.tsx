@@ -12,9 +12,9 @@ interface IPopulerPageProps {}
 
 const PopulerPage: React.FunctionComponent<IPopulerPageProps> = (props) => {
   const [page, setPage] = useState(1);
-  const [lastpage, setLastPage] = useState(0)
+  const [lastpage, setLastPage] = useState(0);
   const [pending, setIsPending] = useState(true);
-  const [datasAnime, setDatasAnime] = useState([]);
+  const [datasAnime, setDatasAnime] = useState<[]>([]);
 
   useApiData({
     resource: "top/anime",
@@ -27,7 +27,7 @@ const PopulerPage: React.FunctionComponent<IPopulerPageProps> = (props) => {
     lastpage,
     setPage,
     setLastPage,
-  })
+  });
 
   return pending ? (
     <div className="custom-loader"></div>

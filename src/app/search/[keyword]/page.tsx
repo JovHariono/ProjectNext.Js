@@ -17,7 +17,7 @@ const SearchResult: React.FunctionComponent<ISearchResultProps> = ({
   const result = params.keyword;
   const decodedResult = decodeURI(result);
 
-  const [datasSearchAnime, setSearchAnime] = useState([]);
+  const [datasSearchAnime, setSearchAnime] = useState<[]>([]);
   const [pending, setIsPending] = useState(true);
 
   useApiData({
