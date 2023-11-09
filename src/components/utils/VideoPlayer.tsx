@@ -18,24 +18,35 @@ const VideoPlayer: React.FunctionComponent<IVideoPlayerProps> = (props) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleCloseButton = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen(!isOpen);
   };
 
-  const Player = () => {
-    return (
+  return (
+    <>
       <div className="fixed bottom-2 right-2">
-        <button
-          className="text-color-primary float-right bg-color-secondary px-3"
-          onClick={handleCloseButton}
-        >
-          X
-        </button>
-        <Youtube videoId={props.result} opts={option} />
+        {isOpen ? (
+          <div className="transition-all">
+            <button
+              className="text-color-primary float-right bg-color-secondary px-3"
+              onClick={handleCloseButton}
+            >
+              X
+            </button>
+            <Youtube videoId={props.result} opts={option} />
+          </div>
+        ) : (
+          <div>
+            <button
+              className="text-color-primary float-right bg-color-secondary px-3"
+              onClick={handleCloseButton}
+            >
+              Open Trailer
+            </button>
+          </div>
+        )}
       </div>
-    );
-  };
-
-  return isOpen ? <Player /> : null;
+    </>
+  );
 };
 
 export default VideoPlayer;
